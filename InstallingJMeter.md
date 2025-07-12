@@ -1,7 +1,3 @@
-Here’s a **concise GitHub Page (Markdown-based)** focused **only on installing JMeter using Homebrew on Mac**, suitable for a technical documentation-style static page:
-
----
-
 # Load Testing in the Cloud 🚀
 
 **Free Website Speed Test • Global Load Testing • Start for Free**
@@ -63,22 +59,3 @@ Here’s a **concise GitHub Page (Markdown-based)** focused **only on installing
 * **Homebrew not found**: Ensure correct installation.
 * **Java not found**: [Download Java](https://www.oracle.com/java/technologies/javase-downloads.html)
 
----
-
-### 🚀 Next Steps
-
-* Start building `.jmx` test plans
-* Run tests locally or in the cloud
-* [Try LoadFocus Cloud JMeter Testing →](https://loadfocus.com)
-
----
-
-> ⚡ Want more speed insights? [Run a Free Website Speed Test →](https://loadfocus.com)
-
----
-
-© 2025 LoadFocus – Cloud Load Testing Platform
-
----
-
-Would you like this turned into a real GitHub Pages site with a layout and styling? I can generate the full HTML or Jekyll setup too.
