@@ -1,0 +1,301 @@
+body {
+    color: #FFFFFF;
+    background-color: #39393c;
+}
+.top-overlay {
+    background-color: #F5F5F5;
+    color: #39393C;
+}
+.top-header {
+    background-color: #39393C;
+    color: #FFFFFF;
+}
+
+.footer .img {
+    background-image: url("../images/48x48.png");
+}
+.name {
+    color: #989895;
+}
+
+textarea {
+    border: 1px solid #C5D6E1 !important;
+    color: #2b2b2b;
+}
+
+#name {
+    border: 1px solid #C5D6E1;
+}
+
+#follow-name {
+    border: 1px solid #C5D6E1;
+}
+
+#signed-block .welcome a
+{
+    color: #7FBC42;
+}
+
+#sign-block a, #signed-block a {
+    color: #7FBC42;
+}
+
+.help a {
+    color: #7FBC42;
+}
+#add-concurrency:before{
+    color: #7FBC42;
+}
+#options-fieldset-test .action:before,
+#advanced-options-fieldset .action:before{
+    color: #9F9F9F;
+}
+#user-status-message {
+    color: #7FBC42;
+}
+#run-overlay .checkbox-wrapper input[type="checkbox"] + label span:before{
+    color: #C9D8E2;
+}
+.gogo{
+    color: #C9D8E2;
+}
+.gogo2{
+    color: #7FBC42;
+}
+#run-overlay .checkbox-wrapper input[type="checkbox"]:checked + label span:before {
+    color: #7FBC42;
+}
+#run-overlay .checkbox-wrapper input[type="checkbox"]:checked + label {
+    color: #7FBC42;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + label span {
+    border: 1px solid #7FBC42 !important;
+}
+.checkbox-wrapper input[type="checkbox"]:checked + label span:after{
+    color: #FFFFFF;
+}
+.footer {
+    background-color: #39393C;
+    color: #FFFFFF;
+}
+
+.footer a {
+    color: #7FBC42;
+}
+.select-wrapper:after {
+    border-left: 1px solid #c2c2c2;
+    color: #7FBC42;
+}
+.select-wrapper:before {
+    color: #7FBC42;
+}
+
+.time-distribution-wrapper #time-distribution {
+    background-color: #7FBC42;
+}
+
+.ui-widget-header {
+    background-color: #ddd;
+}
+
+.ui-slider .ui-slider-handle {
+    background-color: white;
+    border: 1px solid #C9D9E3;
+}
+
+#run-overlay {
+    background: #39393C;
+}
+
+#run-overlay .progressbar {
+    background: #7FBC42;
+}
+
+#run-overlay .button {
+    color: #FFFFFF;
+    background-color: #7FBC42;
+    box-shadow: 0px 4px #7FBC42;
+}
+
+#run-overlay .progressbar .ui-progressbar-value {
+    background-color: #FFFFFF;
+}
+
+#concurrency-display-textfield {
+    background: #fff;
+    border: 1px solid #C5D6E1;
+}
+
+#load-origin, #user-agents-list {
+    background-color: #ffffff;
+    border: 1px solid #C5D6E1;
+}
+
+.ui-autocomplete {
+    background-color: #C5D6E1;
+}
+
+.switch {
+    background: none repeat scroll 0 0 #2b2b2b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) inset, 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.switch-label {
+    color: #A9A9A7;
+}
+
+.switch-input {
+    display: none;
+}
+
+.switch-input:checked + .switch-label {
+    color: #7FBC42;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.switch-selection {
+    background: none repeat scroll 0 0 #7FBC42;
+    box-shadow: 0 1px rgba(255, 255, 255, 0.5) inset, 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.regex-wrapper span {
+    color: #7FBC42;
+}
+
+#regex_follow_input {
+    border: 1px solid #C5D6E1;
+}
+
+.regex-follow-wrapper label span {
+    color: #7FBC42;
+}
+.onoffswitch-label {
+    border: 1px solid #AAAAAA;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    color: white;
+}
+
+.onoffswitch-inner:before {
+    color: #39393C;
+}
+
+.onoffswitch-inner:after {
+    color: #999999;
+}
+.onoffswitch-switch:before{
+    color: #7FBC42;
+}
+#not-current {
+    color: #777;
+}
+
+#current {
+    color: #7FBC42;
+}
+
+#opened-test,
+#opened {
+    border: 1px solid #7FBC42;
+}
+#opened:before,
+#opened-test:before{
+    color: #7FBC42;
+}
+
+#closed-test:before,
+#closed:before{
+    color: #7FBC42;
+}
+.gray{
+    border: 1px solid #C5D6E1;
+}
+.gray_quest{
+    border: 1px solid #C5D6E1;
+}
+.yellow{
+    border: 1px solid #7FBC42;
+}
+.red{
+    border: 1px solid #DD4343;
+}
+.play{
+    border: 1px solid #C5D6E1;
+}
+.gray_font{
+    color: #C5D6E1;
+}
+.yellow_font{
+    color: #7FBC42;
+}
+.red_font{
+    color: #DD4343;
+}
+.play_font{
+    color: #5D5D5D;
+}
+#record-off input {
+    border-color: #DD4343;
+    background-color: #DD4343;
+}
+#record-off i {
+    color: #FFF;
+}
+
+#name:focus {
+    border-color: #AAA;
+}
+
+#save_test_options {
+    color: #7FBC42;
+    background-color: #FFFFFF;
+    border: 1px solid #7FBC42;
+}
+
+#save_test_options:hover {
+    color: #FFFFFF;
+    background-color: #7FBC42;
+    border: 1px solid #FFFFFF;
+}
+
+.autocomplete-suggestions { width:223px !important; border: 1px solid #7FBC42; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 5px; border-bottom: 1px solid #7FBC42; overflow: hidden; text-transform: uppercase; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #7FBC42; }
+
+.chosen-container .chosen-drop,
+.chosen-search input,
+.chosen-container-single .chosen-single {
+    border: 1px solid #c8d8e2 !important;
+}
+
+.chosen-container-single .chosen-single {
+    border: 1px solid #c8d8e2 !important;
+    border-radius: 5px;
+    background-color: #fff;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #ffffff), color-stop(50%, #ffffff), color-stop(52%, #ffffff), color-stop(100%, #ffffff));
+    background: -moz-linear-gradient(#ffffff 20%, #ffffff 50%, #ffffff 52%, #ffffff 100%);
+    background: -o-linear-gradient(#ffffff 20%, #ffffff 50%, #ffffff 52%, #ffffff 100%);
+    box-shadow: none;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #ffffff), color-stop(80%, #ffffff));
+    background-image: -webkit-linear-gradient(#ffffff 20%, #ffffff 80%);
+    background-image: -moz-linear-gradient(#ffffff 20%, #ffffff 80%);
+    background-image: -o-linear-gradient(#ffffff 20%, #ffffff 80%);
+    background-image: linear-gradient(#ffffff 20%, #ffffff 80%);
+}
+
+#advanced-options,
+#account-status,
+#test-options,
+.disabled-section
+{
+    background-color: #39393c;
+}
+
+.requests, #advanced-options-fieldset .advanced-options-title{
+    color: #fff;
+}

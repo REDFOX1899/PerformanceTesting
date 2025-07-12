@@ -1,0 +1,188 @@
+@use "sass:color";
+
+$text-color: #494961;
+
+$disabled-color: #bbb;
+
+$btn-bg: #5405FF;
+$btn-fg: #fff;
+
+$footer-bg: #f8f8fd;
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    background: #ffffff;
+    color: $text-color;
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    padding-bottom: 52px;
+}
+
+.disabled {
+    background: $disabled-color !important;
+    border-color: $disabled-color !important;
+}
+
+button:focus,
+input:focus {
+    outline: none;
+}
+
+button {
+    background-color: $btn-bg;
+    border: 1px $btn-bg solid;
+    border-radius: 3px;
+    color: $btn-fg;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+        background-color: color.mix(white, $btn-bg, 8%);
+    }
+}
+
+input {
+    border-radius: 3px;
+    border: 1px solid #dde7ee;
+}
+
+#recorder-ui {
+    height: 100%;
+}
+
+.recorder-groups {
+    overflow-y: scroll;
+    overflow-x: auto;
+    padding: 10px;
+    height: 100%;
+
+    &__list {
+        font-size: 11px;
+    }
+}
+
+.new-group {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $footer-bg;
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #dddddd;
+
+    &__name {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        flex: 1;
+        padding: 0 10px;
+        line-height: 30px;
+        font-size: 11px;
+        color: rgba(54, 54, 54, 0.8);
+
+        &::-webkit-input-placeholder {
+            color: #aaa;
+        }
+    }
+
+    &__save {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        flex: 0;
+        white-space: nowrap;
+        padding: 0 15px;
+    }
+}
+
+.recorder-groups-header {
+    display: flex;
+    &__title {
+        font-weight: 500;
+        flex: 1;
+    }
+
+    &__counters {
+        width: 50px;
+        margin-left: 10px;
+    }
+
+    &__label {
+        display: inline-block;
+        margin-right: 5px;
+    }
+}
+
+
+.recorder-group {
+    display: flex;
+    align-items: center;
+    color: gray;
+
+    &:last-child {
+        font-weight: bold;
+        color: $text-color;
+
+        .recorder-group__name {
+            font-weight: bold;
+            color: $text-color;
+        }
+    }
+
+    &__name {
+        flex: 1;
+
+        font-size: 11px;
+
+        background-color: transparent;
+        border-color: transparent;
+        padding: 5px 5px;
+        transition: all 0.2s ease-in-out;
+        color: gray;
+
+        &:hover:not(:focus) {
+            cursor: pointer;
+        }
+
+        &:not(:focus):hover,
+        &:active,
+        &:focus {
+            border: 1px solid #dde7ee;
+            background-color: initial;
+        }
+
+        &:active,
+        &:focus {
+            font-weight: normal !important;
+            color: #91b0d7 !important;
+        }
+    }
+
+    &__counters {
+        display: inline-block;
+        width: 50px;
+        margin-left: 10px;
+    }
+
+    &__ui,
+    &__http {
+        display: inline-block;
+        flex: 0;
+
+        &:before {
+            content: '(';
+        }
+        &:after {
+            content: ')';
+        }
+    }
+}

@@ -1,0 +1,9 @@
+body, html {
+    color: #39393c;
+}
+header .header-container {
+    background: #39393c;
+}
+.header-logo {
+    background-image: url('../images/dt.svg');
+}

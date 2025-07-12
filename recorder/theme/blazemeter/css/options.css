@@ -1,0 +1,9 @@
+body, html {
+    color: #4b4b63;
+}
+.header-container {
+    background: #4b4b63;
+}
+.header-logo {
+    background-image: url('../images/bm_logo.svg');
+}

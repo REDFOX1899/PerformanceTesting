@@ -1,0 +1,484 @@
+@import '~jsoneditor/dist/jsoneditor.min.css';
+
+body {
+    font-family: 'Open sans', serif;
+}
+
+.branding-strip {
+    background-color: #f8f8fd;
+    border-radius: 5px 5px 0 0;
+    height: 55px;
+    border: 1px solid #dddddd;
+}
+
+.branding-strip .img {
+    float: left;
+    margin-right: 7px;
+    //background-image: url("../theme/blazemeter/images/48x48.png");
+    margin-top: 17px;
+    margin-left: 13px;
+    width: 24px;
+    height: 24px;
+    background-size: 24px 24px;
+}
+
+.branding-strip .text {
+    display: block;
+    font-size: 16px;
+    padding-top: 18px;
+}
+
+.branding-strip .left {
+}
+
+.branding-strip .right {
+    float: right;
+    height: 1px;
+    margin-right: 15px;
+}
+
+.branding-strip .name {
+    position: relative;
+    bottom: 6px;
+}
+
+.branding-strip .upload-image {
+    margin-left: 10px;
+    bottom: 4px;
+    position: relative;
+}
+
+#upload-jmx .font_style {
+    text-transform: uppercase;
+}
+
+#upload-jmx-off .font_style {
+    text-transform: uppercase;
+}
+
+.branding-strip .taurus-section,
+.branding-strip .json-image,
+.branding-strip .jmx-image {
+    margin-right: 10px;
+    bottom: 4px;
+    position: relative;
+}
+
+.branding-strip .taurus-section #export-taurus {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: 1px solid #bd9838;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    bottom: 17px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.branding-strip .taurus-section #export-taurus span {
+    color: #bd9838;
+    font-family: 'Open Sans';
+    font-size: 9px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    font-weight: 600;
+}
+
+#name {
+    font-size: 11px;
+    height: 24px;
+    width: 300px;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    font-family: 'Open Sans';
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 4px;
+    color: rgba(54, 54, 54, 0.8);
+    outline: none;
+}
+
+div.jsoneditor {
+    border: 1px solid #dddddd;
+}
+
+div.jsoneditor-menu {
+    background-color: #7637FF;
+    border: none;
+}
+
+#run-overlay {
+    color: #000;
+    z-index: 50;
+    position: absolute;
+    background-color: #FFFFFF;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#run-overlay .close {
+    float: right;
+    margin-top: 20px;
+    margin-right: 25px;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+#run-overlay .text {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+}
+
+#run-overlay .progress-body .text {
+    text-align: center;
+}
+
+.unselectall, .selectall {
+    cursor: pointer;
+}
+
+#run-overlay .progressbar {
+    width: 100%;
+    height: 12px;
+    background: #7637FF;
+    border: 1px solid #7637FF;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+#run-overlay .include-domains {
+    text-align: center;
+    padding-left: 12px;
+    padding-top: 12px;
+    overflow-y: auto;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    height: 180px !important;
+}
+
+#run-overlay .button {
+    width: 100px;
+    height: 32px;
+    cursor: pointer;
+    color: #FFFFFF;
+    border-radius: 3px;
+    font-size: 18px;
+    line-height: 32px;
+    -webkit-transition: all 0.1s ease 0s;
+    transition: all 0.1s ease 0s;
+    padding: 0 11px;
+    background-color: #7637FF;
+    box-shadow: 0px 4px #7637FF;
+    text-align: center;
+    margin-left: 12px;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+#run-overlay .progressbar .ui-progressbar-value {
+    background-color: #FFFFFF;
+    border-radius: 10px 0 0 10px;
+}
+
+#run-overlay .body {
+    margin-top: 14px;
+    width: 370px;
+    margin: 80px auto;
+}
+
+#run-overlay .text img {
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+}
+
+
+
+.checkbox-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-wrapper input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + label span {
+}
+
+#run-overlay .checkbox-wrapper input[type="checkbox"] + label span {
+    width: 16px;
+    height: 16px;
+}
+#run-overlay .checkbox-wrapper input[type="checkbox"] + label span:before {
+    content: '\f111';
+    font-family: FontAwesome;
+    font-size: 18px;
+    color: #C9D8E2;
+}
+
+.gogo {
+    font-size: 18px;
+    color: #C9D8E2;
+}
+
+.gogo2 {
+    font-size: 18px;
+    color: #7637FF;
+}
+
+#run-overlay .checkbox-wrapper input[type="checkbox"]:checked + label span {
+    width: 16px;
+    height: 16px;
+}
+
+#run-overlay .checkbox-wrapper input[type="checkbox"]:checked + label span:before {
+    content: '\f111';
+    font-family: FontAwesome;
+    font-size: 18px;
+    color: #7637FF;
+}
+
+#run-overlay .checkbox-wrapper input[type="checkbox"]:checked + label {
+    color: #7637FF;
+}
+
+.checkbox-wrapper input[type="checkbox"] + label span:before {
+    content: '\f1db';
+    font-family: FontAwesome;
+    font-size: 18px;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + label span:before {
+    content: '\f1db';
+    font-family: FontAwesome;
+    font-size: 18px;
+}
+
+#status {
+    margin-left: 12px;
+}
+
+.button_container {
+    display: inline-block;
+    position: relative;
+}
+
+.button_style {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    background: transparent;
+    border-radius: 100%;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.gray {
+    border: 1px solid #C5D6D8;
+    border-radius: 8px;
+}
+
+.yellow {
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+}
+
+.red {
+    border: 1px solid #DE1B1B;
+    border-radius: 8px;
+}
+
+.play {
+    border: 1px solid #C5D6E1;
+    border-radius: 8px;
+}
+
+.pad {
+    margin: 0 10.5px;
+}
+
+.pad-first {
+    margin: 0 10.5px 0 0;
+}
+
+.pad-last {
+    margin: 0 0 0 10.5px;
+}
+
+.mar {
+    margin: 0 4.5px;
+}
+
+.mar-first {
+    margin: 0 4.5px 0 0;
+}
+
+.mar-last {
+    margin: 0 0 0 4.5px;
+}
+
+.top-overlay {
+    display: block;
+    background-color: #f8f8fd;
+    height: 70px;
+    border-bottom: 1px solid #dddddd; /* to match the branding strip */
+}
+
+.bottom-overlay {
+    display: block;
+    bottom: 0px;
+    background-color: #f8f8fd;
+    height: 70px;
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid #dddddd; /* to match the branding strip */
+}
+
+.bottom-overlay .text {
+    text-align: center;
+    color: #000000;
+    font-size: 16px;
+}
+
+.bottom-overlay .logo-editor-bottom {
+    //background: url("../images/48x48.png");
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    height: 24px;
+    width: 24px;
+    margin: auto;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.bottom-overlay .text a {
+    color: #000000;
+}
+
+.font_style {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 9px;
+    z-index: 0;
+    text-align: center;
+    padding-top: 11px;
+    border-radius: 100%;
+    font-style: normal;
+}
+
+.font_style_play {
+    position: absolute;
+    left: 4px;
+    right: 0;
+    top: -1px;
+    bottom: 0;
+    font-size: 14px;
+    z-index: 0;
+    text-align: center;
+    padding-top: 12px;
+    border-radius: 100%;
+    font-style: normal;
+}
+
+.checkbox-wrapper {
+    float: left;
+    display: block;
+    clear: left;
+}
+
+.font_style2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 14px;
+    z-index: 0;
+    text-align: center;
+    padding-top: 11px;
+    border-radius: 100%;
+    font-style: normal;
+}
+
+.gray_font {
+    color: #C5D6E1;
+    pointer-events: none;
+}
+
+.yellow_font {
+    color: #FFFFFF;
+    pointer-events: none;
+}
+
+.red_font {
+    color: #DE1B1B;
+    pointer-events: none;
+}
+
+.play_font {
+    color: #5D5D5D;
+    pointer-events: none;
+}
+
+button, input {
+    outline: none;
+}
+
+div.jsoneditor-value.jsoneditor-number {
+    color: #9c6cff;
+}
+
+.jsoneditor-modal table td.jsoneditor-modal-input {
+    padding-left: 10px;
+}
+
+div.jsoneditor-value.jsoneditor-string {
+    color: #063004;
+}
+
+div.jsoneditor-tree div.jsoneditor-date {
+    background: #aaaab9;
+}
+
+.jsoneditor-navigation-bar {
+    background-color: #f8f8fd;
+    border-bottom: 1px solid #dddddd;
+}
+
+.button_style, .jsoneditor-modal .pico-modal-header {
+    background: #7637FF;
+}
+
+.jsoneditor-modal a, .jsoneditor-modal .jsoneditor-jmespath-label {
+    color: #7637FF;
+}
+
+textarea#query, textarea#preview, select#field {
+    outline-color: #7637FF;
+}
+
+.jsoneditor-modal .jsoneditor-button-group.jsoneditor-button-group-value-asc input.jsoneditor-button-asc,
+.jsoneditor-modal .jsoneditor-button-group.jsoneditor-button-group-value-desc input.jsoneditor-button-desc {
+    border-color: #7637FF;
+    background: #7637FF;
+}
+
+.jsoneditor-modal select {
+    min-width: 222px;
+}

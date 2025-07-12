@@ -1,0 +1,12 @@
+{
+    "name": "BlazeMeter | The Continuous Testing Platform",
+    "description": "Record all HTTP traffic and create a load test in less than 10 minutes (Apache JMeter Compatible).",
+    "server_url": "https://a.blazemeter.com",
+    "ard_url": "https://bard.blazemeter.com",
+    "theme": "blazemeter",
+    "help_link": "https://guide.blazemeter.com/hc/en-us/articles/206732579-Chrome-Extension",
+    "disable_followme": "FALSE",
+    "disable_signup": "FALSE",
+    "GA_code" : "UA-94122840-1",
+    "server_jmx": "https://converter.blazemeter.com"
+}

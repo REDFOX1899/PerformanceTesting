@@ -1,0 +1,771 @@
+<html>
+<head>
+    <title>BlazeMeter Traffic Options</title>
+    <meta http-equiv="Content-Security-Policy">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+    <link rel="stylesheet" type="text/css" href="../dist/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="../jquery/swiper/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/loader.css">
+    <link rel="stylesheet" type="text/css" href="../css/popup-structure.css">
+    <link rel="stylesheet" href="../jquery/chosen/chosen.css">
+    <link id="favicon" rel="shortcut icon" type="image/png" href="../theme/blazemeter/images/48x48.png" />
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../theme/blazemeter/css/popup.css">
+</head>
+<body class="popup">
+<div class="loader" style="display: none">
+    <div class="loading_theme">Authenticating user</div>
+    <div class="loading">&#8230;</div>
+</div>
+<div class="main_popup">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="top-header">
+                    <div class="not-logged" style="display: none" id="sign-block">
+                        <div class="selection">
+                            <a class="login" target="_blank"
+                               href="https://a.blazemeter.com/app/sign-in?app=chrome"><span>Login</span></a>
+                            <span class="seperator">|</span>
+                            <a class="signup" target="_blank"
+                               href="https://a.blazemeter.com/app/sign-up?app=chrome"><span>Signup</span></a>
+                        </div>
+                    </div>
+                    <div class="islogged" style="display: none" id="signed-block"></div>
+                </div>
+
+                <div class="notification-text-alert hidden" id="new-version-alert">
+                    <div class="notification-text-alert-inner">
+                        <div class="notification-text-top-block">
+                            <h4>New version is available</h4>
+                            <div class="close-open-button open-button">
+                                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="close-open-button close-button">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="notification-text-hide-block">
+                            <span>
+                                You will receive the update automatically. <br>
+                                Click <a href="https://guide.blazemeter.com/hc/en-us/articles/115004970329-Chrome-Extension-Changelog-Chrome-Extension-Changelog" target="_blank">here</a>
+                                to see the changelog for BlazeMeter's Chrome extension
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div id="status"></div>
+                <div id="record-configuration">
+                    <div id="record-wrapper">
+                        <div class="name clearfix">
+                            <input placeholder="Enter the name of the test" id="name" type="text" name="name"/>
+                        </div>
+
+                        <div class="buttons clearfix">
+                            <div id="stop" class="button_container mar">
+                                <input type="button" class="tooltip-btn button_style gray" title="Stop recording">
+                                <i class="fa fa-stop font_style red_font"></i>
+                            </div>
+
+                            <div id="stop-off" class="button_container mar">
+                                <input type="button" class="tooltip-btn button_style gray" title="Stop recording">
+                                <i class="fa fa-stop font_style gray_font"></i>
+                            </div>
+
+                            <div id="record" class="button_container mar-first">
+                                <div class="button_big_style">
+                                    <input type="button" class="tooltip-btn" title="">
+                                    <i class="fa fa-circle red_font circle_button"></i>
+                                </div>
+                            </div>
+
+                            <div id="record-off" class="button_container mar-first">
+                                <div class="button_big_style">
+                                    <input type="button" class="tooltip-btn" title="Pause recording">
+                                    <i class="fa fa-pause dark_grey_font pause_button"></i>
+                                </div>
+                            </div>
+
+                            <div id="reset" class="button_container mar-last">
+                                <input type="button" class="tooltip-btn last button_style gray" title="Reset all options">
+                                <i class="fa fa-undo font_style dark_grey_font"></i>
+                            </div>
+
+                            <div id="reset-off" class="button_container mar-last">
+                                <input type="button" class="tooltip-btn last button_style gray" title="Reset all options">
+                                <i class="fa fa-undo font_style gray_font"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="recording-actions">
+                    <div class="recording-actions-inner">
+                        <div id="upload">
+                            <div class="action-wrapper">
+                                <div id="button-upload-jmeter" class="button-wrapper">
+                                    <div class="button_container">
+                                        <input type="button" class="tooltip-btn button_style yellow"
+                                               title="Run JMeter test from the cloud.">
+                                        <i class="fa fa-play font_style_play dark_grey_font"></i>
+                                    </div>
+                                    <div class="action-name">Run</div>
+                                </div>
+                                <div id="button-upload-selenium" class="button-wrapper">
+                                    <div class="button_container">
+                                        <input type="button" class="tooltip-btn button_style yellow"
+                                               title="Run Selenium test from the cloud.">
+                                        <i class="fa fa-play font_style_play dark_grey_font"></i>
+                                    </div>
+                                    <div class="action-name">Run</div>
+                                </div>
+                                <div class="action-dropdown" data-id="run">
+                                    <i class="fa fa-caret-down rotate-toggle-down" aria-hidden="true"></i>
+                                    <div class="action-dropdown-hiding closed" data-id="run">
+                                        <ul>
+                                            <li id="button-upload-jmeter-dropdown" class="tooltip-btn"
+                                                title="Run JMeter test from the cloud.">
+                                                <span>Performance (JMeter)</span>
+                                            </li>
+                                            <li id="button-upload-jmeter-dropdown-off" class="tooltip-btn"
+                                                title="Run JMeter test from the cloud.">
+                                                <span>Performance (JMeter) (No traffic recorded)</span>
+                                            </li>
+                                            <li id="button-upload-browser-dropdown" class="tooltip-btn"
+                                                title="Run Browser Performance test from the cloud.">
+                                                <span>Browser Performance (Selenium)</span>
+                                            </li>
+                                            <li id="button-upload-browser-dropdown-off" class="tooltip-btn"
+                                                title="Run Browser Performance test from the cloud.">
+                                                <span>Browser Performance (Selenium)</span>
+                                            </li>
+                                            <li id="button-upload-selenium-dropdown" class="tooltip-btn"
+                                                title="Run Selenium test from the cloud.">
+                                                <span>GUI Functional (Selenium)</span>
+                                            </li>
+                                            <li id="button-upload-selenium-dropdown-off" style="display:none" class="tooltip-btn"
+                                                title="Run Selenium test from the cloud.">
+                                                <span>GUI Functional (Selenium)</span>
+                                            </li>
+                                            <li id="button-upload-combined-dropdown" class="tooltip-btn"
+                                                title="Run Combined test from the cloud.">
+                                                <span>End User Experience Monitoring <br /> (JMeter & Selenium)</span>
+                                            </li>
+                                            <li id="button-upload-combined-dropdown-off" class="tooltip-btn"
+                                                title="Run Combined test from the cloud.">
+                                                <span>End User Experience Monitoring (JMeter & Selenium) (No JMeter traffic recorded)</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="upload-off">
+                            <div class="action-wrapper action-grey">
+                                <div id="button-upload-off" class="button-wrapper">
+                                    <div class="button_container">
+                                        <input type="button" class=""
+                                               title="Adjust test properties and run from the cloud.">
+                                        <i class="fa fa-play font_style_play gray_font"></i>
+                                    </div>
+                                    <div class="action-name">Run</div>
+                                </div>
+                                <div class="action-dropdown">
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                            <div id="edit">
+                                <div class="action-wrapper">
+                                    <div id="button-edit-jmeter" class="button-wrapper">
+                                        <div class="button_container">
+                                            <input type="button" class="tooltip-btn button_style yellow"
+                                                title="Edit the JMeter recording before it's uploaded">
+                                            <i class="fa fa-pencil font_style dark_grey_font"></i>
+                                        </div>
+                                        <div class="action-name">Edit</div>
+                                    </div>
+                                    <!-- <div id="button-edit-selenium" class="button-wrapper">
+                                        <div class="button_container">
+                                            <input type="button" class="tooltip-btn button_style yellow"
+                                                title="Edit the Selenium recording before it's uploaded">
+                                            <i class="fa fa-pencil font_style dark_grey_font"></i>
+                                        </div>
+                                        <div class="action-name">Edit</div>
+                                    </div> -->
+                                    <!-- <div class="action-dropdown" data-id="edit">
+                                        <i class="fa fa-caret-down rotate-toggle-down" aria-hidden="true"></i>
+                                        <div class="action-dropdown-hiding closed" data-id="edit">
+                                            <ul>
+                                                <li id="button-edit-jmeter-dropdown" class="tooltip-btn"
+                                                    title="Edit the JMeter recording before it's uploaded">
+                                                    <span>JMeter Script...</span>
+                                                </li>
+                                                <li id="button-edit-jmeter-dropdown-off" class="tooltip-btn"
+                                                    title="Edit the JMeter recording before it's uploaded">
+                                                    <span>JMeter Script...</span>
+                                                </li>
+                                                <li id="button-edit-selenium-dropdown" class="tooltip-btn"
+                                                    title="Edit the Selenium recording before it's uploaded">
+                                                    <span>Selenium</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div id="edit-off">
+                                <div class="action-wrapper action-grey">
+                                    <div id="button-edit-jmeter-off" class="button-wrapper">
+                                        <div class="button_container">
+                                            <input type="button" class=""
+                                                title="Edit your recording before it's uploaded(No traffic recorded)">
+                                            <i class="fa fa-pencil font_style gray_font"></i>
+                                        </div>
+                                        <div class="action-name">Edit</div>
+                                    </div>
+                                    <!-- <div class="action-dropdown">
+                                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                    </div> -->
+                                </div>
+                            </div> 
+                        <div id="download">
+                            <div class="action-wrapper">
+                                <div id="button-download" class="button-wrapper">
+                                    <div class="button_container">
+                                        <input type="button" class="tooltip-btn button_style yellow"
+                                            title="Download the recording">
+                                        <i class="fa fa-cloud-download font_style dark_grey_font"></i>
+                                    </div>
+                                    <div class="action-name">Save ...</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="download-off">
+                            <div class="action-wrapper action-grey">
+                                <div id="button-download-off" class="button-wrapper">
+                                    <div class="button_container">
+                                        <input type="button" class="tooltip-btn button_style gray"
+                                            title="Download the recording">
+                                        <i class="fa fa-cloud-download font_style gray_font"></i>
+                                    </div>
+                                    <div class="action-name">Save ...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="adv">
+
+                <div class="domains-to-follow-wrapper">
+
+                    <div class="regex-follow-wrapper">
+                        <div class="button_container_question description"
+                             title='Enter the list of domains you wish to follow. Individual domains must be separated with a comma, sub-domains are included automatically. For example: "google.com, yahoo.com, amazon.com"'>
+                            <label>Domains to Follow <span>*</span></label>
+                        </div>
+                        <br/>
+                        <textarea placeholder="URL without http(s) ex. BlazeMeter.com" rows="3"
+                                  name="regex_follow_input" id="regex_follow_input">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div id="advanced-configuration">
+                    <div id="advanced-options-fieldset">
+                        <div id="closed" class="openclose"></div>
+                        <span class="advanced-options-title">Advanced Options</span>
+                    </div>
+                    <div id="advanced-options">
+                        <div id="test-configuration">
+                            <!-- DELETE: Only in follow-me mode -->
+                            <div class="test-options-wrapper" id="concurrency-wrapper">
+                                <div class="light concurrency-wrapper slider-wrapper">
+                                    <label>Concurrency</label>
+                                    <input min="0" type="number" id="concurrency-display-textfield"/>
+                                    <a title="Each click brings the maximum concurrency up to the next level (Predefined levels are: 100, 1000, 10k, 50k, 100k)"
+                                       class="add-concurrency" id="add-concurrency"></a>
+                                    <div id="concurrency"></div>
+                                    <div class="concurrency-display"></div>
+                                </div>
+
+                                <div class="time-distribution-wrapper slider-wrapper">
+                                    <label>Time Distribution</label>
+                                    <div class="time-distribution-display">
+                                        <div class="text"></div>
+                                    </div>
+                                    <div id="time-distribution"></div>
+                                </div>
+                            </div>
+
+                            <div class="test-follow">
+                                <div class="test-options-wrapper" id="user-agent-wrapper">
+                                    <div class="user-agents-wrapper select-wrapper">
+                                        <div class="wrapper-label"><label>User Agent</label></div>
+                                        <select class="input-block-level" id="user-agents-list"
+                                                name="UserAgents">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="test-options-wrapper">
+                                <div class="regex-wrapper">
+                                    <label>Filter Pattern <span>*</span></label>
+                                    <textarea rows="3" id="regex_include">http://*/*, https://*/*</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="checkbox-wrappers">
+
+                            <div class="checkbox-wrapper cache-wrapper">
+                                <input type="checkbox" id="cache"/>
+                                <i class="ico"></i>
+                                <label for="cache"><span></span>Disable Browser Cache</label>
+                            </div>
+                            <div class="checkbox-wrapper service-workers-wrapper">
+                                <input type="checkbox" id="service-workers"/>
+                                <i class="ico"></i>
+                                <label for="service-workers"><span></span>Wipe Service Workers</label>
+                            </div>
+
+                            <div class="checkbox-wrapper record-cookies-wrapper">
+                                <input type="checkbox" id="record-cookies"/>
+                                <i class="ico"></i>
+                                <label for="record-cookies"><span></span>Record Cookies</label>
+                            </div>
+
+                            <div class="checkbox-wrapper ajax-wrapper">
+                                <input type="checkbox" id="record-ajax"/>
+                                <i class="ico"></i>
+                                <label for="record-ajax"><span></span>Record Ajax Requests</label>
+                            </div>
+
+                            <div class="checkbox-wrapper update-settings-wrapper">
+                                <input type="checkbox" id="update-settings"/>
+                                <i class="ico"></i>
+                                <label for="update-settings"><span></span>Update Settings Before Running Test</label>
+                            </div>
+
+                            <div class="checkbox-wrapper random-think-time-wrapper">
+                                <input type="checkbox" id="random-think-time"/>
+                                <i class="ico"></i>
+                                <label for="random-think-time"><span></span>Randomize recorded think times</label>
+                                <i class="hint fa fa-info-circle" title="Between 50% and 150% of originally recorded time"></i>
+                            </div>
+                            <p class="requests">Requests to Record:</p>
+                            <div class="checkbox-wrapper top-level-wrapper ico-option">
+                                <input name="requests_to_record" type="radio" id="top_level" value="top_level"/>
+                                <i class="ico"></i>
+                                <label for="top_level"><span></span>Only Top Level Requests</label>
+                            </div>
+
+                            <div class="parallel-downloads-wrapper select-wrapper">
+
+                                <div><label for="parallel-downloads-list">Parallel Number of Downloads</label>
+                                </div>
+                                <div>
+                                    <select id="parallel-downloads-list">
+                                        <option value="Chrome" data-value="6">Chrome (6)</option>
+                                        <option value="Firefox" data-value="6">Firefox (6)</option>
+                                        <option value="IE67" data-value="2">IE 6&7 (2)</option>
+                                        <option value="IE89" data-value="6">IE 8&9 (6)</option>
+                                        <option value="IE10" data-value="8">IE 10 (8)</option>
+                                        <option value="IE11" data-value="13">IE 11 (13)</option>
+                                        <option value="Edge1416" data-value="13">Microsoft Edge 14-16 (13)
+                                        </option>
+                                        <option value="Safari5" data-value="6">Safari 5 and newer (6)</option>
+                                        <option value="Safari34" data-value="4">Safari 3&4 (4)</option>
+                                        <option value="Opera" data-value="6">Opera (6)</option>
+                                        <option value="Android2.3" data-value="4">Android Browser 2.3 (4)
+                                        </option>
+                                        <option value="Android4" data-value="17">Android Browser 4 and newer
+                                            (17)
+                                        </option>
+                                        <option value="other" data-value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-wrapper parallel-downloads-text" style="display: none;">
+                                <input min="2" max="17" type="number" id="parallel_downloads"
+                                       data-name="parallel_downloads" data-default="6" data-type="num"/>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="checkbox-wrapper following-wrapper ico-option">
+                                <input name="requests_to_record" type="radio" id="top_level_and_following"
+                                       value="top_level_and_following"/>
+                                <i class="ico"></i>
+                                <label for="top_level_and_following"><span></span>Top Level Requests and the
+                                    Following</label>
+                            </div>
+
+                            <div class="following" style="display: none">
+                                <div class="checkbox-wrapper cookie-wrapper">
+                                    <input type="checkbox" id="cookie"/>
+                                    <i class="ico"></i>
+                                    <label for="cookie"><span></span>Cookies</label>
+                                </div>
+
+                                <div class="checkbox-wrapper css-wrapper">
+                                    <input type="checkbox" id="record-css"/>
+                                    <i class="ico"></i>
+                                    <label for="record-css"><span></span>CSS & Fonts</label>
+                                </div>
+
+                                <div class="checkbox-wrapper js-wrapper">
+                                    <input type="checkbox" id="record-js"/>
+                                    <i class="ico"></i>
+                                    <label for="record-js"><span></span>Javascript</label>
+                                </div>
+
+                                <div class="checkbox-wrapper images-wrapper">
+                                    <input type="checkbox" id="record-images"/>
+                                    <i class="ico"></i>
+                                    <label for="record-images"><span></span>Images</label>
+                                </div>
+
+                                <div class="checkbox-wrapper other-wrapper">
+                                    <input type="checkbox" id="record-redirects"/>
+                                    <i class="ico"></i>
+                                    <label for="record-redirects"><span></span>Redirects</label>
+                                </div>
+
+                                <div class="checkbox-wrapper other-wrapper">
+                                    <input type="checkbox" id="record-other"/>
+                                    <i class="ico"></i>
+                                    <label for="record-other"><span></span>Other</label>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <p class="requests">Additional Options:</p>
+
+                            <div class="checkbox-wrapper export-id-locators-wrapper">
+                                <input type="checkbox" id="export-id-locators" checked />
+                                <i class="ico"></i>
+                                <label for="export-id-locators"><span></span>Export ID Locators</label>
+                            </div>
+                            <div class="checkbox-wrapper allow-context-clicks-wrapper">
+                                <input type="checkbox" id="allow-context-clicks" />
+                                <i class="ico"></i>
+                                <label for="allow-context-clicks"><span></span>Allow Context Clicks to be recorded</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr class="adv">
+
+                    <div class="slide-to" id="options-fieldset-test" data-page="1">
+                        <div class="trigger-options">
+                            <span class="advanced-options-title-test">Save in Project</span>
+                            <div>
+                                <div id="closed-test" class="openclose-test"></div>
+                                <label class="project-name"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="footer_content">
+                        <div class="footer-left">
+                            <a href="https://www.blazemeter.com" target="_blank"><span class="img"></span></a>
+                            <div class="text">
+                                <span class="left"><small>Powered by</small>
+                                    <a href="https://www.blazemeter.com" target="_blank">BlazeMeter
+                                        <small>&#174;</small>
+                                    </a> v <span class="version"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="footer-right">
+                            <div class="description">
+                                <div class="button_container_question">
+                                    <a target="_blank" class="question_style gray_quest"
+                                       href="https://guide.blazemeter.com/hc/en-us/articles/206732579-Chrome-Extension">
+                                        ?
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="run-overlay" style="display:none;">
+                    <div class="top-overlay">
+                        <div class="top-overlay-title"></div>
+                        <div class="close">
+                            <div style="font-size: 16px;">x</div>
+                        </div>
+                    </div>
+                    <div class="progress-body body" style="display:none;">
+                        <div class="text"><h4>Please wait while cloud servers are being
+                            launched.</h4>
+                            <p>Launching servers in the cloud can take about 2 minutes.</p>
+                        </div>
+                        <div class="progressbar"></div>
+                        <p>Your patience is appreciated.</p>
+                        <div id="abort-test" class="button">Abort test!</div>
+                    </div>
+                    <div class="download-body body">
+                        <div class="text">
+                            <p>Select script(s) to save</p>
+                        </div>
+                        <div class="segment-wrapper">
+                            <div class="checkbox-wrapper" id="chk-jmx-wrapper">
+                                <input type="checkbox" name="chk-jmx" id="chk-jmx" value="">
+                                <label for="chk-jmx">
+                                    <span></span>JMeter (JMX)
+                                </label>
+                            </div>
+                            <div class="domains-body body" style="display:none">
+                                <div>
+                                    <div>Domains to include <span class="greyed-text">(Select all that apply)</span>
+                                        <br/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="include-domains"></div>
+                                    <div class="counter-wrapper"><span id="domains-counter">0</span> of <span id="alldomains">1</span> selected</div>
+                                </div>
+                                <div class></div>
+                            </div>
+                        </div>
+                        <div class="horizontal-separator"></div>
+                        <div class="segment-wrapper">
+
+                            <div class="checkbox-wrapper" id="chk-all-wrapper">
+                                <input type="checkbox" name="chk-all" id="chk-all" value="">
+                                <label for="chk-all">
+                                    <span></span>Selenium only
+                                </label>
+                            </div>
+
+                            <div class="languages-body">
+                                <div>
+                                    <div>Languages to include <span class="greyed-text">(Select all that apply)</span>
+                                        <br/>
+                                    </div>
+                                </div>
+
+                                <div class="include-language">
+                                    <div class="checkbox-wrapper" id="chk-yaml-wrapper">
+                                        <input class="upper-level" type="checkbox" name="chk-yaml" id="chk-yaml" value="">
+                                        <label for="chk-yaml">
+                                            <span></span>Selenium only (YAML)
+                                        </label>
+                                    </div>
+                                    <div class="checkbox-wrapper" id="chk-cs-wd-nunit-wrapper">
+                                        <input type="checkbox" name="chk-cs-wd-nunit" id="chk-cs-wd-nunit" value="">
+                                        <label for="chk-cs-wd-nunit">
+                                            <span></span>Selenium (C# WebDriver + NUnit)
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox-wrapper" id="chk-cs-wd-mstest-wrapper">
+                                        <input type="checkbox" name="chk-cs-wd-mstest" id="chk-cs-wd-mstest" value="">
+                                        <label for="chk-cs-wd-mstest">
+                                            <span></span>Selenium (C# WebDriver + MSTest)
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox-wrapper" id="chk-java-wd-testng-wrapper">
+                                        <input type="checkbox" name="chk-java-wd-testng" id="chk-java-wd-testng" value="">
+                                        <label for="chk-java-wd-testng">
+                                            <span></span>Selenium (Java WebDriver + TestNG)
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox-wrapper" id="chk-java-wd-junit-wrapper">
+                                        <input type="checkbox" name="chk-java-wd-junit" id="chk-java-wd-junit" value="">
+                                        <label for="chk-java-wd-junit">
+                                            <span></span>Selenium (Java WebDriver + JUnit)
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox-wrapper" id="chk-java-rc-junit-wrapper">
+                                        <input type="checkbox" name="chk-java-rc-junit" id="chk-java-rc-junit" value="">
+                                        <label for="chk-java-rc-junit">
+                                            <span></span>Selenium (Java (WebDriver-BE RC + JUnit))
+                                        </label>
+                                    </div>
+
+                                   <div class="checkbox-wrapper" id="chk-python-wd-unittest-wrapper">
+                                        <input type="checkbox" name="chk-python-wd-unittest" id="chk-python-wd-unittest" value="">
+                                        <label for="chk-python-wd-unittest">
+                                            <span></span>Selenium (Python WebDriver + UnitTest)
+                                        </label>
+                                    </div>
+
+                                   <div class="checkbox-wrapper" id="chk-ruby-wd-rspec-wrapper">
+                                        <input type="checkbox" name="chk-ruby-wd-rspec" id="chk-ruby-wd-rspec" value="">
+                                        <label for="chk-ruby-wd-rspec">
+                                            <span></span>Selenium (Ruby WebDriver + RSpec)
+                                        </label>
+                                   </div>
+                                    <div class="checkbox-wrapper" id="chk-xml-wrapper">
+                                        <input type="checkbox" name="chk-xml" id="chk-xml" value="">
+                                        <label for="chk-xml">
+                                            <span></span>XML
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="counter-wrapper"><span id="languages-counter">0</span> of 9 selected</div>
+                            </div>
+                        </div>
+                        <div class="horizontal-separator"></div>
+                        <div class="segment-wrapper">
+                            <div class="checkbox-wrapper" id="chk-taurus-wrapper">
+                                <input type="checkbox" name="chk-taurus" id="chk-taurus" value="">
+                                <label id="lbl-taurus" for="chk-taurus">
+                                    <span></span>JMeter & Selenium combined (YAML)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="button download-button">Save</div>
+                    </div>
+                    <div class="domains-body body" style="display:none;">
+                        <div class="text">
+                            <div>Select domains to include in your JMeter
+                                script<br/>
+                            </div>
+                        </div>
+                        <div class="include-domains"></div>
+                        <div class="button">Submit</div>
+                    </div>
+                    <div class="test-ended-body body" style="display:none;">
+                        <div class="text">
+                            <p>Your FollowMe 1hr session has came to its end, please start new
+                                session</p>
+                        </div>
+                        <div id="got-it" class="button">Got It</div>
+                    </div>
+                    <div class="footer overlay-footer">
+                        <div class="footer_content">
+                            <div class="footer-left">
+                                <a href="https://www.blazemeter.com" target="_blank"><span class="img"></span></a>
+                                <div class="text">
+                <span class="left"><small>Powered by</small>
+                    <a href="https://www.blazemeter.com" target="_blank">BlazeMeter
+                        <small>&#174;</small>
+                    </a> v <span class="version"></span></span>
+                                </div>
+                            </div>
+                            <div class="footer-right">
+                                <div class="description">
+                                    <div class="button_container_question">
+                                        <a target="_blank" class="question_style gray_quest"
+                                           href="https://guide.blazemeter.com/hc/en-us/articles/206732579-Chrome-Extension">
+                                            ?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="top-header">
+                    <div class="slide-to" data-page="0">
+                        <div class="back-to cancel-account"><span>Cancel</span></div>
+                    </div>
+                    <div class="top-header-title">Save in Project</div>
+                </div>
+                <div id="account-status"></div>
+                <div class="test-settings">
+                    <div id="test-options">
+                        <div class="account-loader"></div>
+                        <div class="account-expand" style="display: none">
+                            <div class="select-test-options">
+                                <div class="test-options-label">Account</div>
+                                <select id="accounts"></select>
+                            </div>
+                            <div class="select-test-options">
+                                <div class="test-options-label">Workspace</div>
+                                <select id="workspaces"></select>
+                            </div>
+                            <div class="select-test-options">
+                                <div class="test-options-label">Project</div>
+                                <select id="projects"></select>
+                            </div>
+                            <div class="select-test-options save">
+                                <button id="save_test_options" disabled="disabled" type="button">Save</button>
+                            </div>
+                            <div class="info-button">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="license-info">
+                    <div class="license-info-inner-block">
+                        <h3>About License</h3>
+                        <p>
+                            This software includes SideeX 2. SideeX 2 preserves several key features of Selenium IDE and provides a number of advanced improvements.
+                        </p>
+                        <p>
+                            The preserved source code is copyrighted by Software Freedom Conservancy (2011-2016) and Selenium committers (2004-2011).
+                        </p>
+                        <p>
+                            The extended part of source code is copyrighted by SideeX committers (2016-2017).
+                            License and copyright info available at: <br />
+                        </p>
+                        <p>
+                            <a href="https://github.com/SideeX/sideex/blob/master/src/LICENSE/" target="_blank">
+                                https://github.com/SideeX/sideex/blob/master/src/LICENSE/
+                            </a><br />
+                        </p>
+                        <p>
+                            <a href="https://github.com/SideeX/sideex/" target="_blank">
+                                https://github.com/SideeX/sideex/
+                            </a>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="footer_content">
+                        <div class="footer-left">
+                            <a href="https://www.blazemeter.com" target="_blank"><span class="img"></span></a>
+                            <div class="text">
+                <span class="left"><small>Powered by</small>
+                    <a href="https://www.blazemeter.com" target="_blank">BlazeMeter
+                        <small>&#174;</small>
+                    </a> v <span class="version"></span></span>
+                            </div>
+                        </div>
+                        <div class="footer-right">
+                            <div class="description">
+                                <div class="button_container_question">
+                                    <a target="_blank" class="question_style gray_quest"
+                                       href="https://guide.blazemeter.com/hc/en-us/articles/206732579-Chrome-Extension">
+                                        ?
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../lodash/lodash.min.js"></script>
+<script src="../dist/jquery.min.js"></script>
+<script src="../jquery/jquery.ba-resize.min.js"></script>
+<script src="../jquery/chosen/chosen.jquery.js" type="text/javascript"></script>
+<script src="../jquery/swiper/swiper.min.js" type="text/javascript"></script>
+<script src="../dist/jquery-ui.min.js"></script>
+<script src="../jquery/jquery.autocomplete.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/selenium/format/formatCommandOnlyAdapter.js"></script>
+<script src="../js/selenium/format/testCase.js"></script>
+<script src="../js/selenium/format/generate-script.js"></script>
+<script src="../sideex/IO/save-file.js"></script>
+<script src="../sideex/content/utils.js"></script>
+</body>
+</html>

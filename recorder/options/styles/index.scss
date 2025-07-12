@@ -1,0 +1,233 @@
+@use "sass:color";
+
+$color: #4b4b63;
+$bg-color: #f8f8fd;
+$header-height: 48px;
+
+$btn-bg: #7637FF;
+$btn-fg: #ffffff;
+
+$default-box-shadow: 0 4px 10px 1px rgba(200, 216, 226, 0.42);
+
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+html {
+    height: 100%;
+    background-color: $bg-color;
+    color: $color;
+    margin: 0;
+    overflow: hidden;
+}
+
+#options {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: $header-height;
+    line-height: $header-height;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-logo {
+        height: 40px;
+        width: 156px;
+        background: url('../../theme/blazemeter/images/bm_logo.svg') no-repeat center;
+    }
+}
+
+.btn {
+    cursor: pointer;
+    border-color: transparent;
+    border-radius: 3px;
+    outline: none;
+    height: 30px;
+    width: 140px;
+    transition: 0.1s background-color;
+
+    &-primary {
+        background-color: $btn-bg;
+        color: $btn-fg;
+
+        &:hover {
+            background-color: color.mix(white, $btn-bg, 8%);
+        }
+    }
+}
+
+.bzm-options-static {
+    background-color: #fff;
+    box-shadow: $default-box-shadow;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.boxes {
+    background-color: #fff;
+    box-shadow: $default-box-shadow;
+    flex: 1;
+    padding: 20px;
+    margin: 20px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
+label {
+    font-size: 13px;
+    color: gray;
+    margin-bottom: 0.5rem;
+}
+
+input[type='text'] {
+    height: 30px;
+    padding: 5px;
+    color: gray;
+    border: 1px solid #ecf2fa;
+    min-width: 400px;
+    &:focus {
+        outline: none;
+    }
+}
+
+.checkbox {
+    position: relative;
+    padding-left: 30px;
+    line-height: 21px;
+
+    &:before,
+    &:after {
+        position: absolute;
+        cursor: pointer;
+    }
+
+    &:before {
+        content: '';
+        display: inline-block;
+        border-radius: 3px;
+        height: 21px;
+        width: 21px;
+        //border: 1px solid;
+        vertical-align: middle;
+        left: 0;
+        box-shadow: inset 0 0 0 1px #e4e4e5;
+        background: #ecf2fa;
+    }
+
+    &:after {
+        content: '';
+        display: inline-block;
+        height: 7px;
+        width: 13px;
+        border-left: 3px solid;
+        border-bottom: 3px solid;
+
+        transform: rotate(-40deg);
+        left: 5px;
+        top: 4px;
+    }
+}
+
+input[type='checkbox'] {
+    display: none;
+
+    & + .checkbox::after {
+        content: none;
+    }
+
+    &:checked + .checkbox:after {
+        content: '';
+        border-color: #fff;
+    }
+
+    &:checked + .checkbox:before {
+        background: #7637FF;
+        box-shadow: inset 0 0 0 1px #7637FF;
+    }
+}
+
+.has-error {
+    border-color: #dd4343 !important;
+}
+
+.required {
+    color: #dd4343;
+}
+
+.msg {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+    z-index: 999;
+    width: fit-content;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 15px 30px 15px 15px;
+
+    span {
+        margin: auto;
+
+        &:before {
+            font-family: FontAwesome;
+            margin-right: 10px;
+        }
+    }
+
+    &.success {
+        color: #3c763d;
+        background: #dff0d8;
+        border: 1px solid transparent;
+
+        .close {
+            color: #95aa97;
+        }
+
+        span:before {
+            content: '\f058';
+        }
+    }
+
+    &.error {
+        color: #8a6d3b;
+        border: 1px solid #faebcc;
+        background: #fcf8e3;
+        .close {
+            color: #8a6d3b;
+        }
+
+        span:before {
+            content: '\f071';
+        }
+    }
+
+    .close {
+        right: 0;
+        position: absolute;
+        padding: 5px 15px 0 15px;
+        top: 0;
+        font-weight: bold;
+        font-size: 15px;
+    }
+}

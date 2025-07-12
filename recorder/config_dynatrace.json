@@ -1,0 +1,10 @@
+{
+    "name": "Dynatrace Load",
+    "description": "Record all HTTP traffic and create a load test in less than 10 minutes (Apache JMeter Compatible).",
+    "server_url": "https://loadtest.dynatrace.com",
+    "theme": "dynatrace",
+    "help_link": "https://community.dynatrace.com/community/display/DTLOADDOC/Chrome+Extension",
+    "disable_followme": "TRUE",
+    "disable_signup": "TRUE",
+    "GA_code" : "UA-94122840-1"
+}

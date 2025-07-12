@@ -1,0 +1,33 @@
+$btn-size: 35px;
+
+body,
+html {
+    margin: 0;
+    background: #f8f8fd;
+    overflow: hidden;
+}
+
+#control-buttons-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 10px 0 5px;
+}
+
+.btn {
+    width: $btn-size;
+    height: $btn-size;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #c5d6e1;
+    outline: none;
+
+    &-stop,
+    &-resume {
+        color: #DE1B1B;
+    }
+
+    &-pause {
+        color: #484960;
+    }
+}
